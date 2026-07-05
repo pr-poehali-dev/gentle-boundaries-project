@@ -135,7 +135,7 @@ const Index = () => {
           <div className="max-w-2xl">
             <div className="fade-up flex items-center gap-3 mb-8" style={{ animationDelay: '0.1s' }}>
               <span className="h-px w-12 gold-line" />
-              <span className="text-xs tracking-luxe uppercase text-gold/90">Эксперт по отношениям и границам</span>
+              <span className="text-xs tracking-luxe uppercase text-gold/90">Для девушек, которые хотят большего</span>
             </div>
             <h1 className="fade-up font-display text-5xl md:text-7xl leading-[1.05] mb-8" style={{ animationDelay: '0.25s' }}>
               Полюби себя —<br />
@@ -143,8 +143,8 @@ const Index = () => {
               взаимностью
             </h1>
             <p className="fade-up text-lg text-foreground/70 max-w-lg mb-10 leading-relaxed" style={{ animationDelay: '0.4s' }}>
-              Показываю на своём примере, как через личные границы и любовь к себе приходят
-              счастливые отношения, лёгкость и деньги. Гуманно. Бережно. По-женски уверенно.
+              Устала выбирать всех, кроме себя? Показываю на своём опыте, как личные границы
+              и любовь к себе меняют всё: отношения становятся легче, а жизнь — ярче.
             </p>
             <div className="fade-up flex flex-col sm:flex-row gap-4" style={{ animationDelay: '0.55s' }}>
               <Button
