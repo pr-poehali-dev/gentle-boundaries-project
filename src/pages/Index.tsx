@@ -384,14 +384,25 @@ const Index = () => {
                   <Icon name="Send" size={16} className="mr-2" /> ОСТАВИТЬ ЗАЯВКУ
                 </Button>
                 <Button
+                  asChild
                   variant="ghost"
                   className="text-foreground/80 hover:text-gold rounded-none h-14 px-6 tracking-widest text-xs"
                 >
-                  <Icon name="MessageCircle" size={16} className="mr-2" /> НАПИСАТЬ В TELEGRAM
+                  <a href="https://t.me/rose_alexa" target="_blank" rel="noopener noreferrer">
+                    <Icon name="MessageCircle" size={16} className="mr-2" /> НАПИСАТЬ В TELEGRAM
+                  </a>
                 </Button>
               </div>
               <div className="flex justify-center gap-6 mt-12 text-foreground/50">
-                {['Instagram', 'Send', 'Youtube'].map((ic) => (
+                <a
+                  href="https://t.me/rose_alexa"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-11 h-11 rounded-full border border-gold/25 flex items-center justify-center hover:text-gold hover:border-gold/60 transition-all"
+                >
+                  <Icon name="Send" size={18} />
+                </a>
+                {['Instagram', 'Youtube'].map((ic) => (
                   <button key={ic} className="w-11 h-11 rounded-full border border-gold/25 flex items-center justify-center hover:text-gold hover:border-gold/60 transition-all">
                     <Icon name={ic} size={18} />
                   </button>
