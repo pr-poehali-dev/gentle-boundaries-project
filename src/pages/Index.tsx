@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Icon from '@/components/ui/icon';
 import { Button } from '@/components/ui/button';
+import LeadForm from '@/components/LeadForm';
 
 const HERO_IMG = 'https://cdn.poehali.dev/projects/bd69da43-9acc-4da0-b504-686032b8d735/files/8f80d30e-3cf8-4c22-9980-5309692ee9ca.jpg';
 const TEXTURE_IMG = 'https://cdn.poehali.dev/projects/bd69da43-9acc-4da0-b504-686032b8d735/files/a7616d03-254b-41e3-b85e-2a5330948452.jpg';
@@ -57,6 +58,14 @@ const reviews = [
 const Index = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [formOpen, setFormOpen] = useState(false);
+  const [selectedProgram, setSelectedProgram] = useState('');
+
+  const openForm = (program = '') => {
+    setSelectedProgram(program);
+    setFormOpen(true);
+    setMenuOpen(false);
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -94,7 +103,7 @@ const Index = () => {
             ))}
           </nav>
           <Button
-            onClick={() => scrollTo('contacts')}
+            onClick={() => openForm()}
             className="hidden md:inline-flex bg-transparent border border-gold/50 text-gold hover:bg-gold hover:text-primary-foreground rounded-none tracking-widest text-xs px-6 h-11 transition-all"
           >
             НАЧАТЬ
@@ -257,7 +266,7 @@ const Index = () => {
                 <h3 className="font-display text-2xl mb-3">{s.title}</h3>
                 <p className="text-sm text-foreground/60 leading-relaxed flex-1">{s.desc}</p>
                 <button
-                  onClick={() => scrollTo('contacts')}
+                  onClick={() => openForm(s.title)}
                   className="mt-8 flex items-center gap-2 text-gold text-xs tracking-widest hover:gap-4 transition-all"
                 >
                   ПОДРОБНЕЕ <Icon name="ArrowRight" size={14} />
@@ -309,7 +318,7 @@ const Index = () => {
                   ))}
                 </ul>
                 <Button
-                  onClick={() => scrollTo('contacts')}
+                  onClick={() => openForm(p.name)}
                   className={`mt-9 rounded-none py-6 tracking-widest text-xs ${
                     p.featured
                       ? 'bg-gold text-primary-foreground hover:bg-gold/90'
@@ -371,7 +380,7 @@ const Index = () => {
                 Всё в легкости и без давления.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
-                <Button className="bg-gold text-primary-foreground hover:bg-gold/90 rounded-none h-14 px-9 tracking-widest text-xs hover-lift">
+                <Button onClick={() => openForm()} className="bg-gold text-primary-foreground hover:bg-gold/90 rounded-none h-14 px-9 tracking-widest text-xs hover-lift">
                   <Icon name="Send" size={16} className="mr-2" /> ОСТАВИТЬ ЗАЯВКУ
                 </Button>
                 <Button
@@ -402,6 +411,8 @@ const Index = () => {
           <p>© 2026 · Отношения · Личные границы · Любовь к себе</p>
         </div>
       </footer>
+
+      <LeadForm open={formOpen} onClose={() => setFormOpen(false)} program={selectedProgram} />
     </div>
   );
 };
