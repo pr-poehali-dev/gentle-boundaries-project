@@ -318,14 +318,20 @@ const Index = () => {
                   ))}
                 </ul>
                 <Button
-                  onClick={() => openForm(p.name)}
+                  asChild
                   className={`mt-9 rounded-none py-6 tracking-widest text-xs ${
                     p.featured
                       ? 'bg-gold text-primary-foreground hover:bg-gold/90'
                       : 'bg-transparent border border-gold/40 text-gold hover:bg-gold hover:text-primary-foreground'
                   }`}
                 >
-                  ЗАПИСАТЬСЯ
+                  <a
+                    href={`https://t.me/rose_alexa?text=${encodeURIComponent(`Здравствуйте! Хочу записаться на программу «${p.name}»`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    ЗАПИСАТЬСЯ
+                  </a>
                 </Button>
               </div>
             ))}
