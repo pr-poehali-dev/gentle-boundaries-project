@@ -1,11 +1,33 @@
 import json
 import os
+import smtplib
 import urllib.request
 import urllib.parse
+from email.mime.text import MIMEText
+
+
+def send_email(name: str, contact: str, program: str, message: str) -> None:
+    sender = 'ekaterinaa11@list.ru'
+    password = os.environ.get('SMTP_PASSWORD', '')
+
+    body = f'Новая заявка с сайта\n\nИмя: {name}\nКонтакт: {contact}\n'
+    if program:
+        body += f'Программа: {program}\n'
+    if message:
+        body += f'Сообщение: {message}\n'
+
+    msg = MIMEText(body, 'plain', 'utf-8')
+    msg['Subject'] = f'Новая заявка с сайта от {name}'
+    msg['From'] = sender
+    msg['To'] = sender
+
+    with smtplib.SMTP_SSL('smtp.list.ru', 465, timeout=10) as server:
+        server.login(sender, password)
+        server.sendmail(sender, [sender], msg.as_string())
 
 
 def handler(event: dict, context) -> dict:
-    '''Принимает заявку с сайта и отправляет её в Telegram эксперту.'''
+    '''Принимает заявку с сайта и отправляет её в Telegram и на почту эксперту.'''
     method = event.get('httpMethod', 'GET')
 
     if method == 'OPTIONS':
@@ -59,6 +81,8 @@ def handler(event: dict, context) -> dict:
 
     with urllib.request.urlopen(req, timeout=10) as resp:
         resp.read()
+
+    send_email(name, contact, program, message)
 
     return {
         'statusCode': 200,
