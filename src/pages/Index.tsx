@@ -380,8 +380,10 @@ const Index = () => {
                 Всё в легкости и без давления.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
-                <Button onClick={() => openForm()} className="bg-gold text-primary-foreground hover:bg-gold/90 rounded-none h-14 px-9 tracking-widest text-xs hover-lift">
-                  <Icon name="Send" size={16} className="mr-2" /> ОСТАВИТЬ ЗАЯВКУ
+                <Button asChild className="bg-gold text-primary-foreground hover:bg-gold/90 rounded-none h-14 px-9 tracking-widest text-xs hover-lift">
+                  <a href="https://t.me/rose_alexa" target="_blank" rel="noopener noreferrer">
+                    <Icon name="Send" size={16} className="mr-2" /> ОСТАВИТЬ ЗАЯВКУ
+                  </a>
                 </Button>
                 <Button
                   asChild
